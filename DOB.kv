@@ -1,0 +1,67 @@
+<DOBScreen>:
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 350, 450
+            padding: [40, 60, 40, 40]
+            spacing: 20
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # White background for the box
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [20,]
+
+            Label:
+                text: "Enter your Date of Birth"
+                font_size: '23sp'
+                bold: True
+                size_hint_y: None
+                height: 50
+                color: 0, 0, 0, 1
+                align: 'left'
+                text_size: self.width, None
+
+            BoxLayout:
+                spacing: 10
+                TextInput:
+                    id: dob_input
+                    hint_text: 'DD-MM-YYYY'
+                    multiline: False
+                    size_hint_x: 0.7
+                    height: 50
+
+                Button:
+                    text: 'Select Date'
+                    size_hint_x: 0.3
+                    background_normal: ''
+                    background_color: 0.6, 0.4, 1, 1
+                    color: 1, 1, 1, 1
+                    font_size: '14sp'
+                    on_press: app.show_date_picker()
+
+            Widget:
+                size_hint_y: None
+                height: 150
+
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+                spacing: 10
+
+                Button:
+                    text: 'Back'
+                    size_hint_x: 0.5
+                    background_color: 0.5, 0.1, 1, 1  # Purple color for the button
+                    on_press: app.back_pressed()
+
+                Button:
+                    text: 'Next'
+                    size_hint_x: 0.5
+                    background_color: 0.5, 0.1, 1, 1  # Purple color for the button
+                    on_press: app.next_pressed()

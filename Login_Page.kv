@@ -1,0 +1,56 @@
+<LoginScreen>:
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 350, 450
+            padding: [40, 60, 40, 40]
+            spacing: 20
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # White background for the box
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [20,]
+
+            Label:
+                text: "Login"
+                font_size: '30sp'
+                bold: True
+                size_hint_y: None
+                height: 50
+                color: 0, 0, 0, 1
+
+            TextInput:
+                id: username
+                hint_text: 'Enter your username'
+                multiline: False
+                size_hint_y: None
+                height: 50
+
+            TextInput:
+                id: password
+                hint_text: 'Enter your password'
+                multiline: False
+                size_hint_y: None
+                height: 50
+                password: True
+
+            Button:
+                text: 'LOGIN'
+                size_hint_y: None
+                height: 50
+                background_color: 0.5, 0.1, 1, 1  # Purple color for the button
+                on_press: app.next_pressed()
+
+            Label:
+                text: 'Sign Up'
+                font_size: '14sp'
+                color: 0, 0.5, 1, 1  # Blue color for the sign-up text
+                size_hint_y: None
+                height: 30
+                on_touch_down: if self.collide_point(*args[1].pos): app.sign_up()
